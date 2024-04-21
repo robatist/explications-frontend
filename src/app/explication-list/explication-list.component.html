@@ -1,0 +1,20 @@
+<h2>Explications</h2>
+
+<!-- <div *ngIf="selectedExplication">
+    <br/>
+    <h4>{{selectedExplication.designation}}</h4>
+    <p>{{selectedExplication.description}}</p>
+</div> -->
+
+<section class="results">
+    <div *ngFor="let explication of explications" routerLink="/explicationDetail/{{explication.id}}">
+
+        <section class="listing">
+            <img class="listing-photo" [src]="explication.teacher.photo" alt="Teacher photo">
+            <h2 class="listing-heading">{{explication.designation}}</h2>
+            <p class="listing-paragraph">{{explication.studyArea.designation}}</p>
+            <!-- <a routerLink="/explicationDetail/{{explication.id}}">Know more</a> -->
+        </section>
+
+    </div>
+</section>
