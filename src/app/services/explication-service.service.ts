@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Explication } from '../explication';
+import { AuthenticationRequest } from '../authRequest';
+import { AuthenticationResponse } from '../authResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +10,16 @@ import { Explication } from '../explication';
 export class ExplicationService {
 
   constructor(private http: HttpClient) { }
+
+  /* 
+  register() {
+    return this.http.get<Explication[]>('/api/v1/auth/register');
+  } 
+  */
+
+  authenticate(bodyRequest: AuthenticationRequest) {
+    return this.http.post<AuthenticationResponse>('/api/v1/auth/authenticate', bodyRequest);
+  }
 
   getExplicationsList() {
     return this.http.get<Explication[]>('/api/v1/explications');

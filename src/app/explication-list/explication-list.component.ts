@@ -9,11 +9,11 @@ import { Explication } from '../explication';
 })
 export class ExplicationListComponent implements OnInit{
   
+  constructor(private explicationService: ExplicationService) {}
+
   explications: Explication[] = [];
   
   selectedExplication?: any;
-
-  constructor(private explicationService: ExplicationService) {}
 
   ngOnInit(): void {
     this.explicationService.getExplicationsList().subscribe(
