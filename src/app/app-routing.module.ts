@@ -1,25 +1,36 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { ExplicationListComponent } from './explication-list/explication-list.component';
-import { ExplicationDetailsComponent } from './explication-details/explication-details.component';
+import { LoginComponent } from './components/login/login.component';
+import { ExplicationListComponent } from './components/explication-list/explication-list.component';
+import { ExplicationDetailsComponent } from './components/explication-details/explication-details.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginComponent
-    // pathMatch: 'full',
-    // redirectTo: '/explications'
+    redirectTo: 'login',
+    pathMatch: 'full'
+   },
+   {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Login Page',
    },
    {
     path: 'explications', 
     component: ExplicationListComponent,
-    title: 'Home Page'
+    title: 'Home Page',
+    canActivate: [
+      AuthGuard
+    ]
    },
    {
     path: 'explicationDetail/:id', 
     component: ExplicationDetailsComponent,
-    title: 'Explication Details'
+    title: 'Explication Details',
+    canActivate: [
+      AuthGuard
+    ]
    }
 ];
 

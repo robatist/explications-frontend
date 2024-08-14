@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ExplicationService } from '../services/explication-service.service';
-import { Explication } from '../explication';
+import { ExplicationService } from '../../services/explication-service.service';
+import { Explication } from '../../explication';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-explication-list',
@@ -9,7 +10,7 @@ import { Explication } from '../explication';
 })
 export class ExplicationListComponent implements OnInit{
   
-  constructor(private explicationService: ExplicationService) {}
+  constructor(private explicationService: ExplicationService, private authService: AuthService) {}
 
   explications: Explication[] = [];
   
@@ -23,4 +24,9 @@ export class ExplicationListComponent implements OnInit{
       }
     );
   }
+
+  logout() {
+    this.authService.signOut();
+  }
+
 }

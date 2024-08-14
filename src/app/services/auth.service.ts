@@ -1,26 +1,28 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 import { Router } from '@angular/router';
-// import {JwtHelperService} from '@auth0/angular-jwt'
-// import { TokenApiModel } from '../models/token-api.model';
+import { JwtHelperService } from '@auth0/angular-jwt'
+import { TokenApiModel } from './../models/token-api.model';
+import { AuthenticationRequest } from '../authRequest';
+import { AuthenticationResponse } from '../authResponse';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private baseUrl: string = 'https://localhost:8080/api/v1/auth/';
+  private baseUrl: string = 'http://localhost:8080/api/v1/auth/';
   private userPayload:any;
   constructor(private http: HttpClient, private router: Router) {
-    // this.userPayload = this.decodedToken();
+    this.userPayload = this.decodedToken();
    }
 
   signUp(userObj: any) {
     return this.http.post<any>(`${this.baseUrl}register`, userObj)
   }
 
-  signIn(loginObj : any){
-    return this.http.post<any>(`${this.baseUrl}authenticate`,loginObj)
+  signIn(requestBody : AuthenticationRequest){
+    return this.http.post<AuthenticationResponse>(`${this.baseUrl}authenticate`,requestBody)
   }
 
   signOut(){
@@ -46,8 +48,6 @@ export class AuthService {
     return !!localStorage.getItem('token')
   }
 
-  /* 
-
   decodedToken(){
     const jwtHelper = new JwtHelperService();
     const token = this.getToken()!;
@@ -68,7 +68,5 @@ export class AuthService {
   renewToken(tokenApi : TokenApiModel){
     return this.http.post<any>(`${this.baseUrl}refresh`, tokenApi)
   }
-
- */
 
 }
