@@ -11,11 +11,13 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgToastModule } from 'ng-angular-popup';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { SignupComponent } from './components/signup/signup.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         LoginComponent,
+        SignupComponent,
         ExplicationListComponent,
         ExplicationDetailsComponent
     ],
@@ -23,10 +25,10 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
         AppComponent
     ],
     imports: [
-        FormsModule,
-        ReactiveFormsModule,
         BrowserModule,
         AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
         NgbModule,
         NgToastModule
     ],

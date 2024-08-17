@@ -4,6 +4,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ExplicationListComponent } from './components/explication-list/explication-list.component';
 import { ExplicationDetailsComponent } from './components/explication-details/explication-details.component';
 import { AuthGuard } from './guards/auth.guard';
+import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     title: 'Login Page',
+   },
+   {
+    path: 'signup',
+    component: SignupComponent,
+    title: 'Signup Page',
    },
    {
     path: 'explications', 

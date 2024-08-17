@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ExplicationService } from '../../services/explication-service.service';
-import { Explication } from '../../explication';
+import { ExplicationService } from '../../services/explicationsBackend/explication-service.service';
+import { Explication } from '../../models/explication';
 
 @Component({
   selector: 'app-explication-details',
